@@ -47,9 +47,9 @@ class Parking < ApplicationRecord
   end
 
   def calculate_long_term_amount
-    if duration <= 720
+    if duration <= 360
       self.amount = 1200
-    elsif duration > 720 && duration <= 1440
+    elsif duration > 360 && duration <= 1440
       self.amount = 1600
     end
   end
