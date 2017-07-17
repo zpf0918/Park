@@ -1,6 +1,7 @@
 <h1>停车费计算</h1>
 
 <% if @parking.amount.present? %>
+  <p>计费方式 <%= @parking.parking_type %></p>
   <p>从<%= @parking.start_at %> 至 <%= @parking.end_at %></p>
   <p>计<%= @parking.duration %></p>
   <p>费用为<%= @parking.amount %>元</p>

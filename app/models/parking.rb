@@ -3,6 +3,8 @@ class Parking < ApplicationRecord
   validates_inclusion_of :parking_type, :in => ["guest", "short-term", "long-term"]
   validate :validate_end_at_with_amount
 
+  belongs_to :user, :optional => true
+
   def validate_end_at_with_amount
     if ( end_at.present? && amount.blank? )
        errors.add( :amount, "有结束时间就必须有金额")
@@ -23,8 +25,6 @@ class Parking < ApplicationRecord
       else
         self.amount = 200 + ( (duration - 60 ).to_f / 30).ceil * 100
       end
-
-      self.amount = total
     end
   end
 end
