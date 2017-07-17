@@ -19,4 +19,19 @@ RSpec.describe Parking, type: :model do
      end
    end
 
+   describe ".calculate_amount" do
+     it "30mins shoule be ￥2" do
+       parking = Parking.new( :parking_type => "guest", :start_at => Time.now, :end_at => Time.now + 30.minutes)
+       parking.calculate_amount
+       expect(parking.amount).to eq(200)
+     end
+
+     it "60mins should be ￥2" do
+       parking = Parking.new( :parking_type => "guest", :start_at => Time.now, :end_at => Time.now + 60.minutes)
+       parking.calculate_amount
+       expect(parking.amount).to eq(200)
+     end
+
+   end
+
 end
