@@ -218,7 +218,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_rails_console
-  capybara (~> 2.13)
+  capybara
   coffee-rails (~> 4.2)
   devise
   jbuilder (~> 2.5)
