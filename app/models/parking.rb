@@ -6,9 +6,6 @@ class Parking < ApplicationRecord
   belongs_to :user, :optional => true
 
   def validate_end_at_with_amount
-    if ( end_at.present? && amount.blank? )
-       errors.add( :amount, "有结束时间就必须有金额")
-    end
     if ( end_at.blank? && amount.present? )
        errors.add( :end_at, "有金额就必须有结束时间")
     end
@@ -32,9 +29,9 @@ class Parking < ApplicationRecord
 
   def calculate_guest_term_amount
     if duration <= 60
-      self.amount = 2
+      self.amount = 200
     else
-      self.amount = 2 + ((duration - 60).to_f / 30).ceil
+      self.amount = 200 + ((duration - 60).to_f / 30).ceil * 100
     end
   end
 
