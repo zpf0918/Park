@@ -32,9 +32,9 @@ class Parking < ApplicationRecord
 
   def calculate_guest_term_amount
     if duration <= 60
-      self.amount = 200
+      self.amount = 2
     else
-      self.amount = 200 + ((duration - 60).to_f / 30).ceil * 100
+      self.amount = 2 + ((duration - 60).to_f / 30).ceil
     end
   end
 
