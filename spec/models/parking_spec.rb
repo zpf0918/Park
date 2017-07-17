@@ -31,7 +31,7 @@ RSpec.describe Parking, type: :model do
            @parking = Parking.new(:parking_type => "guest", :user => @user, :start_at => @time)
          end
 
-       it "30mins shoule be ￥2" do
+       it "30mins shoule be ￥2"  do
          @parking.end_at = @time + 30.minutes
          @parking.calculate_amount
          expect(@parking.amount).to eq(200)
