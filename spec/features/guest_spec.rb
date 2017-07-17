@@ -20,9 +20,6 @@ feature "parking", :type => :feature do
     # Step 3:
 
     click_button "结束计费" # 按这个按钮
-
-    # Step 4: 看到费用画面
-
   end
 
 end
