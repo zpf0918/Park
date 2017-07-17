@@ -1,0 +1,12 @@
+<h1>停车费计算</h1>
+
+<% if @parking.amount.present? %>
+  <p>从<%= @parking.start_at %> 至 <%= @parking.end_at %></p>
+  <p>计<%= @parking.duration %></p>
+  <p>费用为<%= @parking.amount %>元</p>
+  <p><%= link_to("继续停车", new_parking_path )%></p>
+<% else %>
+  <%= form_for @parking do |f| %>
+    <p><%= f.submit "结束计费" %></p>
+  <% end %>
+<% end %>
