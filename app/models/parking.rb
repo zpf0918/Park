@@ -2,7 +2,7 @@ class Parking < ApplicationRecord
   validates_presence_of :parking_type, :start_at
   validates_inclusion_of :parking_type, :in => ["guest", "short-term", "long-term"]
   validate :validate_end_at_with_amount
-
+  before_validation :setup_amount
   belongs_to :user, :optional => true
 
   def validate_end_at_with_amount
@@ -15,7 +15,7 @@ class Parking < ApplicationRecord
     ( end_at - start_at) / 60
   end
 
-  def calculate_amount
+  def setup_amount
     if self.amount.blank? && self.start_at.present? && self.end_at.present?
       if self.user.blank?
         self.amount = calculate_guest_term_amount
