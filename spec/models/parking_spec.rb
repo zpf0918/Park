@@ -27,9 +27,31 @@ RSpec.describe Parking, type: :model do
      end
 
      it "60mins should be ￥2" do
-       parking = Parking.new( :parking_type => "guest", :start_at => Time.now, :end_at => Time.now + 60.minutes)
+       t = Time.now
+       parking = Parking.new( :parking_type => "guest", :start_at => t, :end_at => t + 60.minutes)
        parking.calculate_amount
        expect(parking.amount).to eq(200)
+     end
+
+     it "61mins should be ￥3" do
+       t = Time.now
+       parking = Parking.new( :parking_type => "guest", :start_at => t, :end_at => t + 61.minutes)
+       parking.calculate_amount
+       expect(parking.amount).to eq(300)
+     end
+
+     it "90mins should be ￥3" do
+       t = Time.now
+       parking = Parking.new( :parking_type => "guest", :start_at => t, :end_at => t + 90.minutes)
+       parking.calculate_amount
+       expect(parking.amount).to eq(300)
+     end
+
+     it "120mins should be ￥4" do
+       t = Time.now
+       parking = Parking.new( :parking_type => "guest", :start_at => t, :end_at => t + 120.minutes)
+       parking.calculate_amount
+       expect(parking.amount).to eq(400)
      end
 
    end
